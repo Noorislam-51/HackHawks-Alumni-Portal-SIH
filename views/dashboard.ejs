@@ -15,14 +15,14 @@
     <%- include('partials/sidebar') %>
         <!-- Content Area -->
         <div class="col-md-9 col-lg-10 content">
-            <h2 class="fw-semibold">Welcome back, <%= name %>! 👋</h2>
+            <h2 class="fw-semibold">Welcome back, <%=user.name %>! 👋</h2>
             <p class="text-muted">Glad to have you in the alumni community.</p>
 
             <div class="profile-card d-flex align-items-center mt-4">
-                <img src="/images/ali-photo.jpg" alt="Profile picture" class="profile-img me-4">
+                <img src="/images/uploads/<%= user.pfp %>" alt="Profile picture" class="profile-img me-4">
                 <div>
                     <h5 class="mb-1">
-                        <%= name %>
+                        <%= user.name %>
                     </h5>
                     <p class="mb-2">Software Engineer | Batch 2023 | CSE | Delhi</p>
                     <a href="/profile" class="btn btn-primary btn-sm">View Full Profile</a>

@@ -7,56 +7,93 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/dashboard.css">
-
-
 </head>
 
 <body>
-    <%- include('partials/sidebar') %>
-        <!-- Content Area -->
-        <div class="col-md-9 col-lg-10 content">
-            <h2 class="fw-semibold">Welcome back, <%=user.name %>! 👋</h2>
-            <p class="text-muted">Glad to have you in the alumni community.</p>
-
-            <div class="profile-card d-flex align-items-center mt-4">
-                <img src="/images/uploads/<%= user.pfp %>" alt="Profile picture" class="profile-img me-4">
-                <div>
-                    <h5 class="mb-1">
-                        <%= user.name %>
-                    </h5>
-                    <p class="mb-2">Software Engineer | Batch 2023 | CSE | Delhi</p>
-                    <a href="/profile" class="btn btn-primary btn-sm">View Full Profile</a>
-                </div>
+    <!-- 🔹 Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark top-navbar shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <i class="bi bi-globe me-2"></i> AlumniConnect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><i class="bi bi-house-door-fill me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-people-fill me-1"></i> Directory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-newspaper me-1"></i> Feed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-chat-dots-fill me-1"></i> Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-trophy-fill me-1"></i> Achievements</a>
+                    </li>
+                </ul>
+                <a href="/logout" class="btn btn-light btn-sm rounded-pill px-4 fw-semibold shadow-sm">
+                    <i class="bi bi-box-arrow-right me-1"></i> Logout
+                </a>
             </div>
+        </div>
+    </nav>
 
-            <h4 class="mt-5 mb-3">🎉 Recent Community Activity</h4>
-            <table class="table table-striped table-bordered">
-                <tbody>
 
-                    <tr>
-                        <td>You posted in <strong>"Tech Careers After Graduation"</strong></td>
-                    </tr>
-                    <% let cnt=0; %>
-                        <% for (const post of posts) {%>
-                            <% cnt++ %>
-                                <% if (cnt===10){ break } %>
-                                    <tr>
-                                        <td>
-                                            <%= post.name %> added a new achievement: <em>"<%= post.post %>"</em>
-                                        </td>
-                                    </tr>
-                                    <%}%>
-                                        <tr>
-                                            <td>New event: <strong>Alumni Meet 2025</strong> – Register now!</td>
-                                        </tr>
-
-                </tbody>
-            </table>
+    <!-- 🔹 Content -->
+    <div class="container mt-5">
+        <!-- Greeting -->
+        <div class="mb-4">
+            <h3 class="fw-bold text-dark">Welcome back, <%= user.name %> 👋</h3>
+            <p class="text-muted">We’re glad to have you in the alumni community.</p>
         </div>
 
-        </div>
+        <!-- Profile Card -->
+        <div class="profile-card d-flex align-items-center p-4">
+            <img src="/images/uploads/<%= user.pfp %>" alt="Profile picture" class="profile-img me-4">
+            <div>
+                <h5 class="fw-semibold mb-1 text-dark">
+                    <%= user.name %>
+                </h5>
+                <p class="text-muted small mb-3">Software Engineer · Batch 2023 · CSE · Delhi</p>
+                <a href="/profile" class="btn btn-primary btn-sm rounded-pill px-4 fw-semibold">View Profile</a>
+            </div>
         </div>
 
+        <!-- Activity Card -->
+        <div class="activity-card mt-5 p-4">
+            <h6 class="fw-bold mb-3 text-dark">Recent Community Activity</h6>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-3 text-muted">
+                    <i class="bi bi-chat-dots-fill text-primary me-2"></i>
+                    You posted in <strong>Tech Careers After Graduation</strong>
+                </li>
+                <% let cnt=0; %>
+                    <% for (const post of posts) { %>
+                        <% cnt++ %>
+                            <% if (cnt===10) { break } %>
+                                <li class="mb-3 text-muted">
+                                    <i class="bi bi-award-fill text-success me-2"></i>
+                                    <strong>
+                                        <%= post.name %>
+                                    </strong> added a new achievement:
+                                    <em>"<%= post.post %>"</em>
+                                </li>
+                                <% } %>
+                                    <li class="text-muted">
+                                        <i class="bi bi-calendar-event-fill text-danger me-2"></i>
+                                        New event: <strong>Alumni Meet 2025</strong> – Register now!
+                                    </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

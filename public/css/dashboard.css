@@ -1,85 +1,96 @@
 body {
-  background: #f8f9fb;
+  background: #f8fbff;
   font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
   color: #212529;
 }
 
-/* 🔹 Navbar */
+/* Navbar */
+.nav-logo{
+  display: flex;
+  margin: 0px 5px;
+}
+.nav-link:hover,
+  .nav-link.active {
+    color: linear-gradient(90deg, #60a5fa, #fcd34d) !important;
+    background-color: linear-gradient(90deg, #60a5fa, #fcd34d) !important;
+  }
 .top-navbar {
-  background: linear-gradient(90deg, #0d6efd, #0056b3);
-  padding: 12px 20px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  padding: 14px 22px;
   border-radius: 0 0 18px 18px;
 }
 
+.top-navbar .navbar-brand {
+  font-size: 1.4rem;
+  color: #fff !important;
+}
+
 .top-navbar .nav-link {
-  color: #f8f9fa !important;
+  color: #ffffff !important;
   font-weight: 500;
-  margin: 0 8px;
-  transition: color 0.2s ease-in-out;
+  margin: 0 12px;
+  transition: all 0.2s ease-in-out;
 }
 
-.top-navbar .nav-link:hover {
-  color: #d9e9ff !important;
-}
-
+.top-navbar .nav-link:hover,
 .top-navbar .nav-link.active {
-  text-decoration: underline;
+  color: #ffda6a !important;
 }
 
-/* 🔹 Profile Card */
+/* Profile Card */
 .profile-card {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease-in-out;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .profile-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
 .profile-img {
-  width: 80px;
-  height: 80px;
+  width: 95px;
+  height: 95px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #0d6efd;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  border: 3px solid #3b82f6;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Activity Card */
+/* Activity Card */
 .activity-card {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.activity-card:hover {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
 .activity-card ul li {
   font-size: 0.95rem;
   line-height: 1.6;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eaeef5;
 }
 
-/* 🔹 Buttons */
-.btn-primary {
-  background: #0d6efd;
+.activity-card ul li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons */
+.btn-gradient {
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  color: #fff;
   border: none;
-  transition: background 0.2s;
+  transition: all 0.3s ease-in-out;
 }
 
-.btn-primary:hover {
-  background: #0056b3;
-}
-
-.btn-light {
-  background: #ffffff;
-  color: #0d6efd;
-  border: 1px solid #dce3f0;
-  transition: all 0.2s;
-}
-
-.btn-light:hover {
-  background: #f1f5ff;
-  color: #0056b3;
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #2563eb, #4338ca);
+  color: #fff;
 }

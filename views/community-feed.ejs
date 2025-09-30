@@ -21,90 +21,98 @@
 </head>
 
 <body>
+    <%- include('partials/Navbar') %>
+        <!-- Sidebar -->
+        <div class="hello">
+            <div class="container-fluid">
+                <div class="row">
 
-    <!-- Sidebar -->
-    <%- include('partials/sidebar') %>
+                    <!-- Sidebar -->
+                  
 
-        <div class="col-md-9 col-lg-10 content">
+                    <div class="col-md-9 col-lg-10 content">
 
-            <div class="content">
+                        <div class="content">
 
-                <!-- Posts Container (Center) -->
-                <div class="posts-container" id="posts-container">
+                            <!-- Posts Container (Center) -->
+                            <div class="posts-container" id="posts-container">
 
-                    <!-- Sample post -->
-                    <% posts_users.forEach((post)=>{%>
-                        <div class="post">
-                            <div class="post-header">
-                                <img src="./images/alumni-card-img.jpg" alt="User" class="post-user-img">
-                                <div class="post-user-info">
-                                    <div class="post-user-name">
-                                        <%= post.name %>
+                                <!-- Sample post -->
+                                <% posts_users.forEach((post)=>{%>
+                                    <div class="post">
+                                        <div class="post-header">
+                                            <img src="./images/alumni-card-img.jpg" alt="User" class="post-user-img">
+                                            <div class="post-user-info">
+                                                <div class="post-user-name">
+                                                    <%= post.name %>
+                                                </div>
+                                                <div class="post-user-headline">
+                                                    <%= post.job_title %> at <%= post.company %>
+                                                </div>
+                                                <!-- <div class="post-time">2 hours ago</div> -->
+                                            </div>
+                                        </div>
+
+                                        <div class="post-content">
+                                            <%= post.post %>
+                                        </div>
+
+                                        <!-- Tags Section -->
+                                        <div class="post-tags mt-2">
+                                            <% for (const tag of post.tags) {%>
+                                                <span class="badge bg-secondary me-1">#<%= tag %></span>
+
+                                                <%} %>
+
+                                        </div>
+
+                                        <div class="post-interactions mt-2">
+                                            <div class="interaction">
+                                                <i>👍</i> Like <span></span>
+                                            </div>
+                                            <div class="interaction">
+                                                <i>💬</i> Comment <span></span>
+                                            </div>
+                                            <div class="interaction">
+                                                <i>↪️</i> Share <span></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="post-user-headline">
-                                        <%= post.job_title %> at <%= post.company %>
-                                    </div>
-                                    <!-- <div class="post-time">2 hours ago</div> -->
-                                </div>
-                            </div>
+                                    <% }) %>
 
-                            <div class="post-content">
-                                <%= post.post %>
-                            </div>
 
-                            <!-- Tags Section -->
-                            <div class="post-tags mt-2">
-                                <% for (const tag of post.tags) {%>
-                                    <span class="badge bg-secondary me-1">#<%= tag %></span>
-
-                                    <%} %>
-
-                            </div>
-
-                            <div class="post-interactions mt-2">
-                                <div class="interaction">
-                                    <i>👍</i> Like <span></span>
-                                </div>
-                                <div class="interaction">
-                                    <i>💬</i> Comment <span></span>
-                                </div>
-                                <div class="interaction">
-                                    <i>↪️</i> Share <span></span>
-                                </div>
+                                        <!-- More posts will be dynamically added here -->
                             </div>
                         </div>
-                        <% }) %>
+                        <!-- Post Form (Right) -->
 
+                        <div class="col-md-3 ">
+                            <div class="card p-3 shadow-sm border-0 rounded-4">
+                                <div class="text-center">
+                                    <img src="./images/ali-photo.jpg" class="rounded-circle mb-2" width="60"
+                                        height="60">
+                                    <h6 class="fw-semibold mb-3">What do you want to talk about?</h6>
+                                </div>
+                                <form action="/post" method="POST" enctype="multipart/form-data">
+                                    <div class="mb-2">
+                                        <textarea name="content" rows="3" class="form-control rounded-3"
+                                            placeholder="Share something..." required></textarea>
+                                    </div>
+                                    <div class="mb-2">
+                                        <input type="text" name="tags" class="form-control"
+                                            placeholder="Tags (comma-separated)">
+                                    </div>
 
-                            <!-- More posts will be dynamically added here -->
-                </div>
-            </div>
-            <!-- Post Form (Right) -->
-
-            <div class="col-md-3 ">
-                <div class="card p-3 shadow-sm border-0 rounded-4">
-                    <div class="text-center">
-                        <img src="./images/ali-photo.jpg" class="rounded-circle mb-2" width="60" height="60">
-                        <h6 class="fw-semibold mb-3">What do you want to talk about?</h6>
+                                    <button type="submit" class="btn btn-secondary w-100 rounded-pill">Post</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <form action="/post" method="POST" enctype="multipart/form-data">
-                        <div class="mb-2">
-                            <textarea name="content" rows="3" class="form-control rounded-3"
-                                placeholder="Share something..." required></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <input type="text" name="tags" class="form-control" placeholder="Tags (comma-separated)">
-                        </div>
 
-                        <button type="submit" class="btn btn-secondary w-100 rounded-pill">Post</button>
-                    </form>
                 </div>
-            </div>
-        </div>
 
 
-
-        <script src="./js/community.js"></script>
+                <script src="./js/community.js"></script>
 </body>
 
 </html>
